@@ -50,8 +50,9 @@ class PlainOldActivity : AppCompatActivity() {
 //        setContentView(R.layout.plain_activity)
         binding = DataBindingUtil.setContentView(this, R.layout.plain_activity)
 
-        binding.name = "Jane"
-        binding.lastName = "Adi"
+//        binding.name = "Jane"
+//        binding.lastName = "Adi"
+        binding.viewmodel = viewModel
 
         // TODO: Explicitly setting initial values is a bad pattern. We'll fix that.
 //        updateName()
