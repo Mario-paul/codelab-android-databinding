@@ -27,15 +27,19 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.widget.ImageViewCompat
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import com.example.android.databinding.basicsample.R
 import com.example.android.databinding.basicsample.data.Popularity
 import com.example.android.databinding.basicsample.data.SimpleViewModel
+import com.example.android.databinding.basicsample.databinding.PlainActivityBinding
 
 /**
  * Plain old activity with lots of problems to fix.
  */
 class PlainOldActivity : AppCompatActivity() {
+
+    private lateinit var binding: PlainActivityBinding
 
     // Obtain ViewModel from ViewModelProviders
     private val viewModel by lazy { ViewModelProviders.of(this).get(SimpleViewModel::class.java) }
@@ -43,10 +47,14 @@ class PlainOldActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.plain_activity)
+//        setContentView(R.layout.plain_activity)
+        binding = DataBindingUtil.setContentView(this, R.layout.plain_activity)
+
+        binding.name = "Jane"
+        binding.lastName = "Adi"
 
         // TODO: Explicitly setting initial values is a bad pattern. We'll fix that.
-        updateName()
+//        updateName()
         updateLikes()
     }
 
@@ -62,10 +70,10 @@ class PlainOldActivity : AppCompatActivity() {
     /**
      * So much findViewById! We'll fix that with Data Binding.
      */
-    private fun updateName() {
-        findViewById<TextView>(R.id.plain_name).text = viewModel.name
-        findViewById<TextView>(R.id.plain_lastname).text = viewModel.lastName
-    }
+//    private fun updateName() {
+//        findViewById<TextView>(R.id.plain_name).text = viewModel.name
+//        findViewById<TextView>(R.id.plain_lastname).text = viewModel.lastName
+//    }
 
     /**
      * This method has many problems:
@@ -91,6 +99,7 @@ class PlainOldActivity : AppCompatActivity() {
             Popularity.NORMAL -> context.theme.obtainStyledAttributes(
                 intArrayOf(android.R.attr.colorForeground)
             ).getColor(0, 0x000000)
+
             Popularity.POPULAR -> ContextCompat.getColor(context, R.color.popular)
             Popularity.STAR -> ContextCompat.getColor(context, R.color.star)
         }
@@ -101,9 +110,11 @@ class PlainOldActivity : AppCompatActivity() {
             Popularity.NORMAL -> {
                 ContextCompat.getDrawable(context, R.drawable.ic_person_black_96dp)
             }
+
             Popularity.POPULAR -> {
                 ContextCompat.getDrawable(context, R.drawable.ic_whatshot_black_96dp)
             }
+
             Popularity.STAR -> {
                 ContextCompat.getDrawable(context, R.drawable.ic_whatshot_black_96dp)
             }
