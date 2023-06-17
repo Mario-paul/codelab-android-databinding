@@ -32,6 +32,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.android.databinding.basicsample.R
 import com.example.android.databinding.basicsample.data.Popularity
 import com.example.android.databinding.basicsample.data.SimpleViewModel
+import com.example.android.databinding.basicsample.data.SimpleViewModelSolution2And3
 import com.example.android.databinding.basicsample.databinding.PlainActivitySolution2Binding
 
 /**
@@ -40,7 +41,7 @@ import com.example.android.databinding.basicsample.databinding.PlainActivitySolu
 class PlainOldActivitySolution2 : AppCompatActivity() {
 
     // Obtain ViewModel from ViewModelProviders
-    private val viewModel by lazy { ViewModelProviders.of(this).get(SimpleViewModel::class.java) }
+    private val viewModel by lazy { ViewModelProviders.of(this).get(SimpleViewModelSolution2And3::class.java) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -23,7 +23,7 @@
 
         <variable
             name="viewmodel"
-            type="com.example.android.databinding.basicsample.data.SimpleViewModel"/>
+            type="com.example.android.databinding.basicsample.data.SimpleViewModelSolution2And3"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
